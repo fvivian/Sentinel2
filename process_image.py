@@ -11,7 +11,7 @@ Functions for Dynamic Map creating and Image Processing. The module image_proces
 ------------------------------------------------------------------------------------------------------------------------
 '''
 
-def create_dmap(raw_bands, method='clip'):
+def createDynMap(raw_bands, method='clip'):
     '''This function creates a Dynamic Map after HoloViews with the raw band data being the only input. '''
     
     global dummy
