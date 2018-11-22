@@ -220,22 +220,22 @@ class S2processing:
         
         from ipyleaflet import Map, ImageOverlay
         
-        nx = self.nx
-        ny = self.ny
-        
         center = [(self.phi.max()+self.phi.min())/2.,
                   (self.lam.max()+self.lam.max())/2.]
-        self.map = Map(center=center,
-                       zoom=8,
-                       width='100%',
-                       heigth=6000)
+        M = Map(center=center,
+                zoom=8,
+                width='100%',
+                heigth=6000)
         
         imgurl = self.nameOutNew + '.png'
-        self.map.add_layer(ImageOverlay(url=imgurl,
-                                        bounds=[[self.phi.min(), self.lam.min()],
-                                                [self.phi.max(), self.lam.max()]]))
-       
-        return self.map
+        img_bounds = [[self.phi.min(), self.lam.min()],
+                      [self.phi.max(), self.lam.max()]]
+        
+        io = ImageOverlay(url=imgurl, bounds=img_bounds)
+        M.add_layer(io)
+
+        return M
+
         
         
         
