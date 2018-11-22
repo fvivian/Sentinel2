@@ -87,7 +87,7 @@ class S2processing:
         root = tree.getroot()
         a = root.find('.//EXT_POS_LIST')
         x = [float(i) for i in a.text.split()]     # convert values from string to float
-        del(x[-4:])                                # delete obsolete values at end of array
+        #del(x[-4:])                                # delete obsolete values at end of array
         self.lat = x[0::2]
         self.lon = x[1::2]
    
@@ -99,7 +99,7 @@ class S2processing:
         # the full-size image consists of 10'980 x 10'980 datapoints, i.e. pixel. due to memory
         # restrictions, the number of pixels is reduced to 10'980 / x where x = 2^n.
 
-
+        print(lat, lon)
         phi_SWtoNW = np.linspace(lat[3], lat[0], num=self.nx)
         phi_SEtoNE = np.linspace(lat[2], lat[1], num=self.nx)
         lam_SWtoNW = np.linspace(lon[3], lon[0], num=self.ny)
@@ -128,7 +128,7 @@ class S2processing:
                                urcrnrlat = latCorners.max(),
                                llcrnrlon = lonCorners.min(),
                                urcrnrlon = lonCorners.max(),
-                               resolution = 'i')
+                               resolution = 'c')
         
         self.xCorners, self.yCorners = self.basemap(lonCorners, latCorners)
         
@@ -234,7 +234,7 @@ class S2processing:
         self.map.add_layer(ImageOverlay(url=imgurl,
                                         bounds=[[self.phi.min(), self.lam.min()],
                                                 [self.phi.max(), self.lam.max()]]))
-        
+       
         return self.map
         
         

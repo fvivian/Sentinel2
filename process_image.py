@@ -1,5 +1,4 @@
 import image_processing_short as ips
-import S2png
 import numpy as np
 import holoviews as hv
 
