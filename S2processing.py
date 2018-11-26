@@ -93,13 +93,9 @@ class S2processing:
    
         lat, lon = self.lat, self.lon
 
-
-        print('set up coordinate system of tilted image.')
-
         # the full-size image consists of 10'980 x 10'980 datapoints, i.e. pixel. due to memory
         # restrictions, the number of pixels is reduced to 10'980 / x where x = 2^n.
 
-        print(lat, lon)
         phi_SWtoNW = np.linspace(lat[3], lat[0], num=self.nx)
         phi_SEtoNE = np.linspace(lat[2], lat[1], num=self.nx)
         lam_SWtoNW = np.linspace(lon[3], lon[0], num=self.ny)
@@ -233,7 +229,7 @@ class S2processing:
         
         io = ImageOverlay(url=imgurl, bounds=img_bounds)
         M.add_layer(io)
-
+        
         return M
 
         

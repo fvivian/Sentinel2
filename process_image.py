@@ -35,9 +35,9 @@ def createDynMap(raw_bands, method='clip'):
 
         return dmap.redim.values(stdfactor=factor)
     
-    if method=='percentile':
+    if method=='percent':
         
-        dmap = hv.DynamicMap(percentile, kdims=['lower', 'upper'])
+        dmap = hv.DynamicMap(percent, kdims=['lower', 'upper'])
         
         n = 11
         upper_limit = np.linspace(90, 100, num=n)
@@ -102,7 +102,7 @@ def stdclip(factor):
     
     return hv.RGB(arr)
 
-def percentile(lower_lim, upper_lim):
+def percent(lower_lim, upper_lim):
     '''a certain percentage interval is used to cut off the outlying values.'''
     
     bands_array = np.asarray(dummy)
